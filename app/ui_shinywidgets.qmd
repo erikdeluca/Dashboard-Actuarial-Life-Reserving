@@ -1,0 +1,88 @@
+---
+title: "Assicurazioni vita"
+format:
+  dashboard:
+    theme: www/styles.scss
+server: shiny
+---
+
+# Visualizzazione dati
+
+## input {.sidebar}
+
+```{r}
+
+
+pickerInput(
+"funds",
+"Seleziona i fondi",
+choices = mapping_funds,
+selected = mapping_funds[1],
+multiple = T,
+# options = pickerOptions(container = "body", liveSearch = TRUE, actionsBox = TRUE),
+width = "100%"
+)
+
+pickerInput(
+"var_to_analyze",
+"Seleziona la variabile",
+choices = mapping_vars,
+selected = "partial_withdrawals_claims", 
+multiple = F,
+options = pickerOptions(container = "body", liveSearch = TRUE, actionsBox = TRUE),
+width = "100%"
+)
+
+pickerInput(
+"years",
+"Seleziona gli anni",
+choices = mapping_years,
+selected = mapping_years, 
+multiple = T,
+# options = pickerOptions(container = "body", liveSearch = TRUE, actionsBox = TRUE),
+width = "100%"
+)
+
+prettyRadioButtons(
+   inputId = "type_plot",
+   label = "Tipo di grafico",
+    choices = c("Valori assoluti" = "abs",
+                "Tasso alla riserva in 0" = "index_0",
+                "Tasso alla riserva in t" = "index_t"),
+   inline = TRUE,
+   icon = icon("check"),
+  animation = "pulse",
+   fill = TRUE
+)
+```
+
+## plot 
+
+
+```{r}
+plotOutput("plot")
+```
+
+# Importazione dati
+
+
+```{r}
+fileInput("file", "Carica file CSV", accept = c(".csv"))
+
+pickerInput(
+  "year_input",
+  "Seleziona anno di riferimento",
+  choices = 2000:2030,
+  selected = 2024,
+  multiple = F,
+  options = pickerOptions(container = "body", liveSearch = TRUE, actionsBox = TRUE),
+  width = "100%"
+)
+
+actionBttn(
+   inputId = "load_button",
+   label = "Carica il file",
+   style = "jelly",
+    color = "success"
+)
+```

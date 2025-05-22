@@ -1,0 +1,152 @@
+---
+title: "Assicurazioni vita"
+format:
+  dashboard:
+    theme: 
+      - www/styles.scss
+server: shiny
+---
+
+# Visualizzazione dati
+
+## input {.sidebar}
+
+```{r}
+selectizeInput(
+  inputId = "funds",
+  label = "Seleziona i fondi",
+  choices = mapping$funds,
+  selected = mapping$funds[1],
+  multiple = TRUE,
+  width = "100%"
+)
+
+selectizeInput(
+  inputId = "var_to_analyze",
+  label = "Seleziona la variabile",
+  choices = mapping$vars,
+  selected = "partial_withdrawals_claims", 
+  multiple = FALSE,
+  width = "100%"
+)
+
+selectizeInput(
+  inputId = "years",
+  label = "Seleziona gli anni",
+  choices = mapping$years,
+  selected = mapping$years, 
+  multiple = TRUE,
+  width = "100%"
+)
+
+
+prettyRadioButtons(
+   inputId = "type_plot",
+   label = "Tipo di grafico",
+    choices = c("Valori assoluti" = "abs",
+                "Tasso alla riserva in 0" = "index_0",
+                "Tasso alla riserva in t" = "index_t"),
+   inline = TRUE,
+   icon = icon("check"),
+   animation = "pulse",
+   fill = TRUE
+)
+```
+
+## plot 
+
+
+```{r}
+plotOutput("plot") |> 
+  withSpinner(
+    type = 8,
+    color = "#03045eff",
+    size = 1.5  
+    )
+```
+
+# Gestione dati
+
+## Modifica dati
+
+### Carica file CSV
+
+```{r}
+use_waiter()
+
+fileInput(
+  "file",
+  "Carica file CSV",
+  accept = c(".csv"),
+  width = "100%", 
+  buttonLabel = "Scegli file")
+
+selectInput(
+  inputId = "year_input",
+  label = "Seleziona anno di riferimento",
+  choices = 2000:2030,
+  selected = 2024,
+  width = "100%"
+)
+
+actionButton(
+   inputId = "load_button",
+   label = "Carica il file",
+   width = "100%"
+)
+```
+
+### Elimina o salva file
+
+```{r}
+actionButton(
+  inputId = "delete_button",
+  label = "Elimina file",
+  width = "100%"
+)
+
+actionButton(
+  inputId = "save_button",
+  label = "Salva file",
+  width = "100%"
+)
+```
+
+
+## Stampa grafici
+
+```{r}
+selectizeInput(
+  inputId = "funds_print",
+  label = "Seleziona i fondi",
+  choices = mapping$funds,
+  selected = mapping$funds,
+  multiple = TRUE,
+  width = "100%"
+)
+
+selectizeInput(
+  inputId = "var_to_analyze_print",
+  label = "Seleziona la variabile",
+  choices = mapping$vars,
+  selected = mapping$vars, 
+  multiple = TRUE,
+  width = "100%"
+)
+
+selectizeInput(
+  inputId = "years_print",
+  label = "Seleziona gli anni",
+  choices = mapping$years,
+  selected = mapping$years, 
+  multiple = TRUE,
+  width = "100%"
+)
+
+actionButton(
+  inputId = "print_button",
+  label = "Stampa grafico",
+  width = "100%"
+)
+```
+
