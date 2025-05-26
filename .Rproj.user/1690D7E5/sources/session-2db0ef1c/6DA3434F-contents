@@ -53,6 +53,20 @@ prettyRadioButtons(
 )
 ```
 
+Testo nel grafico
+
+```{r}
+switchInput(
+  inputId = "show_text_in_plot",
+  label = "Testo",
+  value = TRUE,
+  onLabel = "Sì",
+  offLabel = "No",
+  width = "100%",
+)
+
+```
+
 ## plot 
 
 
@@ -78,8 +92,10 @@ fileInput(
   "file",
   "Carica file CSV",
   accept = c(".csv"),
-  width = "100%", 
-  buttonLabel = "Scegli file")
+  # width = "100%", 
+  buttonLabel = "Scegli file",
+  placeholder = "Nessun file selezionato"
+  )
 
 selectInput(
   inputId = "year_input",
@@ -88,6 +104,7 @@ selectInput(
   selected = 2024,
   width = "100%"
 )
+
 
 actionButton(
    inputId = "load_button",
@@ -113,7 +130,7 @@ actionButton(
 ```
 
 
-## Stampa grafici
+## Stampa grafici {width="70%"}
 
 ```{r}
 selectizeInput(
@@ -129,9 +146,15 @@ selectizeInput(
   inputId = "var_to_analyze_print",
   label = "Seleziona la variabile",
   choices = mapping$vars,
-  selected = mapping$vars, 
+  selected = "partial_withdrawals_claims", 
   multiple = TRUE,
   width = "100%"
+)
+
+checkboxInput(
+  "all_vars",
+  label = "Tutte le variabili",
+  value = FALSE
 )
 
 selectizeInput(
@@ -141,6 +164,22 @@ selectizeInput(
   selected = mapping$years, 
   multiple = TRUE,
   width = "100%"
+)
+
+sliderInput(
+  inputId = "plot_width",
+  label = "Larghezza grafico (in pollici)",
+  value = 8,
+  min = 4,
+  max = 20
+)
+
+sliderInput(
+  inputId = "plot_height",
+  label = "Altezza grafico (in pollici)",
+  value = 6,
+  min = 4,
+  max = 20
 )
 
 actionButton(

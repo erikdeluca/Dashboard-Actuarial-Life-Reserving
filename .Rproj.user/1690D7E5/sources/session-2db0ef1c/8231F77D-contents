@@ -44,7 +44,7 @@ server <- function(input, output, session) {
       selected = mapping()$years
     )
 
-    showNotification("Dati caricati con successo!", type = "default")
+    showNotification("Dati caricati con successo!", type = "message")
     #
     #     # hide the loading screen
     #     waiter_hide()
@@ -73,6 +73,33 @@ server <- function(input, output, session) {
     showNotification("Dati eliminati!", type = "warning")
   })
 
+  # save the plots
+  observeEvent(input$print_button, {
+    showNotification("Salvando i grafici", type = "message")
+    funds <- input$funds_print
+    vars <- if (input$all_vars) mapping$vars else input$var_to_analyze_print
+    years <- input$years_print
+    type_plot <- input$type_plot
+    show_text <- input$show_text_in_plot
+    width <- input$plot_width
+    height <- input$plot_height
+
+    save_fund_plots(
+      data = data(),
+      funds = funds,
+      vars = vars,
+      years = years,
+      show_text = show_text,
+      width = width,
+      height = height,
+      path = "plots"
+    )
+    showNotification(
+      "Grafici salvati nelle cartelle dei fondi!",
+      type = "message"
+    )
+  })
+
   # render the plot
   output$plot <- renderPlot({
     req(data())
@@ -81,7 +108,9 @@ server <- function(input, output, session) {
       input$funds,
       input$var_to_analyze,
       input$type_plot,
-      input$years
-    )
+      input$years,
+      input$show_text_in_plot
+    ) -> plot
+    plot(plot)
   })
 }

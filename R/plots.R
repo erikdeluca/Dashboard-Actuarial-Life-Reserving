@@ -1,3 +1,12 @@
+# load libraries ---------------------------------------------------------------
+pacman::p_load(
+  tidyverse,
+  ggiraph,
+  gfonts, # for custom fonts
+  gdtools # for custom fonts
+)
+source(here("R", "label_number.R"))
+
 # setting plots ------------------------
 my_palette <- c(
   "#03045e", # federal-blue
@@ -6,6 +15,9 @@ my_palette <- c(
   "#00b4d8" # pacific-cyan
   # "#90e0ef" # non-photo-blue
 )
+# register the Figtree font
+register_gfont("Figtree")
+systemfonts::match_fonts("Figtree")
 
 # funzione per selezionare i colori della palette più distanti tra loro
 pick_palette <- function(palette, n, reverse = T) {
@@ -29,7 +41,9 @@ plot_time_series <- function(
   fondi = c("Fondo A", "Fondo B"),
   var_confronto = "partial_withdrawals_claims",
   type_plot = "abs",
-  year = NULL
+  year = NULL,
+  show_text = TRUE,
+  ...
 ) {
   if (!type_plot %in% c("abs", "index_0", "index_t"))
     stop("type_plot must be 'abs' or 'index_0' or 'index_t'")
@@ -57,20 +71,32 @@ plot_time_series <- function(
         type_plot == "abs" ~ .data[[var_confronto]],
         type_plot == "index_0" ~ .data[[var_confronto]] / first(reserve_math),
         type_plot == "index_t" ~ .data[[var_confronto]] / lag(reserve_math)
+      ),
+      label = case_when(
+        type_plot == "abs" ~
+          number(
+            y,
+            accuracy = 1,
+            # prefix = "€",
+            scale_cut = cut_short_scale()
+          ),
+        type_plot == "index_0" ~ scales::percent(y, accuracy = .1),
+        type_plot == "index_t" ~ scales::percent(y, accuracy = .1)
       )
     ) |>
     filter(time > 0) -> data_graph
 
-  plot <- ggplot(
-    data_graph,
-    aes(
-      x = time,
-      y = y,
-      color = year,
-      linetype = group,
-      group = interaction(year, group)
-    )
-  ) +
+  plot <-
+    ggplot(
+      data_graph,
+      aes(
+        x = time,
+        y = y,
+        color = year,
+        linetype = group,
+        group = interaction(year, group)
+      )
+    ) +
     geom_line() +
     scale_color_manual(
       name = "Year",
@@ -93,12 +119,16 @@ plot_time_series <- function(
     theme_minimal(base_family = "Figtree") +
     theme(
       legend.position = "bottom",
-      plot.title = element_text(family = "Parkinsans", face = "bold"),
+      text = element_text(family = "Figtree", size = 12),
+      # plot.title = element_text(family = "Parkinsans", face = "bold"),
+      plot.title = element_text(family = "Figtree", face = "bold"),
       plot.subtitle = element_text(family = "Figtree"),
       axis.title = element_text(family = "Figtree"),
       axis.text = element_text(family = "Figtree"),
       legend.text = element_text(family = "Figtree"),
-      legend.title = element_text(family = "Parkinsans", face = "bold")
+      legend.title = element_text(family = "Figtree", face = "bold"),
+      # remove minor grid lines
+      panel.grid.minor = element_blank(),
     )
 
   if (type_plot == "abs") {
@@ -114,10 +144,49 @@ plot_time_series <- function(
       scale_y_continuous(labels = scales::percent_format(accuracy = 1))
   }
 
+  if (show_text) {
+    plot <- plot +
+      ggrepel::geom_text_repel(
+        aes(
+          label = label,
+        ),
+        box.padding = 0.5,
+        point.padding = 0.5,
+        # fill = scales::alpha("white", 0.9),
+        # nudge_y = 0.01 * max(data_graph$y, na.rm = TRUE),
+        # nudge_x = 0.1,
+        # size = 2.8,
+        segment.linetype = "dotted",
+        segment.color = "grey70",
+        segment.size = 0.5,
+        verbose = F
+        # max.overlaps = 10,
+        # max.time = 1,
+        # max.iter = 10000,
+      )
+  }
+
   return(plot)
 }
 
-# plot_time_series(data, c("Fondo D", "Fondo B"), "partial_withdrawals_claims", "abs")
-# plot_time_series(data, c("Fondo D", "Fondo B"), "partial_withdrawals_claims", "index_0")
+# plot_time_series(
+#   data,
+#   c("Fondo C", "Fondo E"),
+#   "partial_withdrawals_claims",
+#   "abs"
+# )
+# plot_time_series(
+#   data,
+#   c("Fondo D", "Fondo B"),
+#   "partial_withdrawals_claims",
+#   "index_t"
+# )
 # plot_time_series(data, c("Fondo D", "Fondo B"), "partial_withdrawals_claims", "index_t", year = 2023)
-# plot_time_series(data, c("Fondo D", "Fondo B"), "partial_withdrawals_claims", "index_t", year = 2023)
+# plot_time_series(
+#   data,
+#   c("Fondo D", "Fondo B"),
+#   "partial_withdrawals_claims",
+#   "abs",
+#   year = c(2023, 2024)
+# )
+# #
