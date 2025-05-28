@@ -1,5 +1,5 @@
 ---
-title: "Assicurazioni vita"
+title: "Tool Flussi"
 format:
   dashboard:
     theme: 
@@ -69,6 +69,8 @@ switchInput(
 
 ## plot 
 
+<!-- #| fig-width: 4 -->
+<!-- #| fig-height: 4 -->
 
 ```{r}
 plotOutput("plot") |> 
@@ -79,13 +81,15 @@ plotOutput("plot") |>
     )
 ```
 
-# Gestione dati
+# Gestione dati {.flow scrolling="true"}
 
-## Modifica dati
+## Modifica dati 
 
-### Carica file CSV
+### Carica file CSV {title="Carica Nuovi Dati"}
 
 ```{r}
+#| title: "Carica Nuovi Dati"
+
 use_waiter()
 
 fileInput(
@@ -113,9 +117,10 @@ actionButton(
 )
 ```
 
-### Elimina o salva file
+### Elimina o salva file {title="Elimina o Salva Dati"}
 
 ```{r}
+#| title: "Elimina o Salva Dati"
 actionButton(
   inputId = "delete_button",
   label = "Elimina file",
@@ -130,9 +135,13 @@ actionButton(
 ```
 
 
-## Stampa grafici {width="70%"}
+## Stampa grafici {title="Salva i Grafici" height="70%"}
+
+
+
 
 ```{r}
+#| title: "Salva i Grafici"
 selectizeInput(
   inputId = "funds_print",
   label = "Seleziona i fondi",
@@ -166,6 +175,19 @@ selectizeInput(
   width = "100%"
 )
 
+actionButton(
+  inputId = "print_button",
+  label = "Stampa grafico",
+  width = "100%"
+)
+```
+
+
+### {.sidebar title="Impostazioni Grafico"}
+
+```{r}
+#| title: "Impostazioni Grafico"
+
 sliderInput(
   inputId = "plot_width",
   label = "Larghezza grafico (in pollici)",
@@ -180,12 +202,6 @@ sliderInput(
   value = 6,
   min = 4,
   max = 20
-)
-
-actionButton(
-  inputId = "print_button",
-  label = "Stampa grafico",
-  width = "100%"
 )
 ```
 

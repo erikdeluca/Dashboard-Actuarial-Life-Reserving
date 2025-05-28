@@ -57,7 +57,8 @@ save_fund_plots <- function(
             var_confronto = var,
             type_plot = plot_type,
             year = years,
-            show_text = show_text
+            show_text = show_text,
+            show_funds_legend = FALSE
           )
           ggsave(
             filename = here::here(path, fondo, file_name),

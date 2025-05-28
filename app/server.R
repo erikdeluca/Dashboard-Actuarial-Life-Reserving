@@ -1,4 +1,3 @@
-# server <- function(input, output, session) {
 server <- function(input, output, session) {
   data <- reactiveVal(data)
   mapping <- reactiveVal()
@@ -40,6 +39,24 @@ server <- function(input, output, session) {
     updateSelectizeInput(
       session,
       "years",
+      choices = mapping()$years,
+      selected = mapping()$years
+    )
+    updateSelectizeInput(
+      session,
+      "funds_print",
+      choices = mapping()$funds,
+      selected = mapping()$funds[1]
+    )
+    updateSelectizeInput(
+      session,
+      "var_to_analyze_print",
+      choices = mapping()$vars,
+      selected = "partial_withdrawals_claims"
+    )
+    updateSelectizeInput(
+      session,
+      "years_print",
       choices = mapping()$years,
       selected = mapping()$years
     )

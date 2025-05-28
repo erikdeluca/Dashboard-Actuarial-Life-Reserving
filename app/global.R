@@ -10,7 +10,7 @@ pacman::p_load(
   # shinydashboard,
   shinyWidgets,
   bslib,
-  sass,
+  sass, # for compiling sass files
   waiter # for loading screen
 )
 

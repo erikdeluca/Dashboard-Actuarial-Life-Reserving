@@ -43,6 +43,7 @@ plot_time_series <- function(
   type_plot = "abs",
   year = NULL,
   show_text = TRUE,
+  show_funds_legend = TRUE,
   ...
 ) {
   if (!type_plot %in% c("abs", "index_0", "index_t"))
@@ -52,6 +53,7 @@ plot_time_series <- function(
     str_to_title()
   if (is.null(year)) year <- unique(df$year)
 
+  # prepare the data for plotting
   df |>
     select(
       year,
@@ -64,14 +66,20 @@ plot_time_series <- function(
       group %in% fondi,
       year %in% !!year
     ) |>
+    arrange(
+      time
+    ) |>
     mutate(
-      across(year, as.factor),
-      time = time / 12,
       y = case_when(
         type_plot == "abs" ~ .data[[var_confronto]],
         type_plot == "index_0" ~ .data[[var_confronto]] / first(reserve_math),
         type_plot == "index_t" ~ .data[[var_confronto]] / lag(reserve_math)
       ),
+      .by = c(group, year)
+    ) |>
+    mutate(
+      across(year, as.factor),
+      time = time / 12,
       label = case_when(
         type_plot == "abs" ~
           number(
@@ -82,10 +90,11 @@ plot_time_series <- function(
           ),
         type_plot == "index_0" ~ scales::percent(y, accuracy = .1),
         type_plot == "index_t" ~ scales::percent(y, accuracy = .1)
-      )
+      ),
     ) |>
     filter(time > 0) -> data_graph
 
+  # plotting the data
   plot <-
     ggplot(
       data_graph,
@@ -139,11 +148,21 @@ plot_time_series <- function(
       labs(
         subtitle = "Absolute values"
       )
-  } else {
+  } else if (type_plot == "index_0") {
     plot <- plot +
-      scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+      scale_y_continuous(labels = scales::percent_format(accuracy = .1)) +
+      labs(
+        subtitle = "Indexed to the first value of the reserve math"
+      )
+  } else if (type_plot == "index_t") {
+    plot <- plot +
+      scale_y_continuous(labels = scales::percent_format(accuracy = .1)) +
+      labs(
+        subtitle = "Indexed to the previous value of the reserve math"
+      )
   }
 
+  # Add text labels if show_text is TRUE
   if (show_text) {
     plot <- plot +
       ggrepel::geom_text_repel(
@@ -164,6 +183,12 @@ plot_time_series <- function(
         # max.time = 1,
         # max.iter = 10000,
       )
+  }
+
+  # remove the legend for funds if show_funds_legend is FALSE
+  if (!show_funds_legend) {
+    plot <- plot +
+      guides(linetype = "none")
   }
 
   return(plot)

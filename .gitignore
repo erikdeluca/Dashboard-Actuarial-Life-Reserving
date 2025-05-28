@@ -1,2 +1,6 @@
-/data
+/data/*
 .RData
+.Rproj.user
+.Rhistory
+/plots/*
+/app/ui.html
