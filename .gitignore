@@ -4,3 +4,4 @@
 .Rhistory
 /plots/*
 /app/ui.html
+.RDataTmp
