@@ -44,16 +44,16 @@ source(here("R", "save_data.R"))
 # carica i dati dalla cartella data, questo lo fa all'avvio dell'app.
 # In modo da evitare di caricare ogni volta i dati.
 # In alternativa si caricheranno attraverso l'apposita maschera
-if (file.exists(here("data", "test_merged.csv"))) {
+if (file.exists(here("data", "dati_precaricati.csv"))) {
   initial_data <- read_delim(
-    here("data", "test_merged.csv"),
+    here("data", "dati_precaricati.csv"),
     delim = ";"
   )
 
   initial_mapping <- mapping_input_elements(initial_data)
   mapping <- initial_mapping
 } else {
-  message("File test_merged.csv non trovato, caricamento dati di test")
+  message("File dati_precaricati.csv non trovato, caricamento dati di test")
   initial_data <- NULL
   initial_mapping <- NULL
   mapping <- initial_mapping

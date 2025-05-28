@@ -49,6 +49,26 @@ pacman::p_load(
 
 ---
 
+## Aggiunta dati
+
+All'avvio dell'app, R proverà a caricare i dati presenti nel file `data/dati_precaricati.csv`.
+Per aggiungere i tuoi dati:
+
+1. Crea un file CSV con i tuoi dati attuariali.
+2. Salvalo nella cartella `data/` con il nome `dati_precaricati.csv`.
+3. Assicurati che il file abbia le colonne corrette:
+   - `year` (Anno del flusso)
+   - `group` (Fondo di appartenenza del flusso)
+   - `time` (Tempo del flusso in mesi)
+   - `period` (Etichetta del tempo)
+   - `t_from` (Tempo di inizio del flusso)
+   - `t_to` (Tempo di fine del flusso)
+
+In alternativa, puoi avviare l'app senza dati pre-caricati e caricarli manualmente tramite l'interfaccia.
+Inoltre, tramite l'app puoi salvare il dataset di lavoro in un file CSV per usi futuri.
+
+---
+
 ## Struttura del progetto
 
 - `app/ui.qmd` — Dashboard principale Quarto
