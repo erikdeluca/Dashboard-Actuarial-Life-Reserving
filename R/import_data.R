@@ -70,6 +70,15 @@ upload_data <- function(previous_data, new_data_path, year_new_data) {
       .by = c(year, group, time, period, t_from, t_to)
     )
 
+  if (is.null(previous_data)) {
+    message("No previous data found, returning new data")
+    showNotification(
+      "Nessun dato precedente trovato, i nuovi dati verranno utilizzati",
+      type = "message"
+    )
+    return(new_data)
+  }
+
   # check if the new data doesn't have the same year
   if (any(new_data$year %in% previous_data$year)) {
     warning(

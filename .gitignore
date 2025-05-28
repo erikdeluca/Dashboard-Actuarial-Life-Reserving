@@ -1,7 +1,9 @@
 /data/*
 .RData
-.Rproj.user
+.Rproj.user/
 .Rhistory
 /plots/*
 /app/ui.html
 .RDataTmp
+*.Rproj
+app/ui_files/

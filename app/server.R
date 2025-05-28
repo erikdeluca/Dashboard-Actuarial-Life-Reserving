@@ -1,6 +1,6 @@
 server <- function(input, output, session) {
-  data <- reactiveVal(data)
-  mapping <- reactiveVal()
+  data <- reactiveVal(initial_data)
+  mapping <- reactiveVal(initial_mapping)
 
   observeEvent(input$load_button, {
     # show the loading screen
@@ -16,7 +16,11 @@ server <- function(input, output, session) {
     showNotification("Caricando i dati", type = "message")
 
     # carica i dati e uniscili con i vecchi
-    new_data <- upload_data(data(), input$file$datapath, input$year_input)
+    new_data <- upload_data(
+      data(),
+      input$file$datapath,
+      input$year_input
+    )
     data(new_data)
 
     # update the mapping of the input elements
@@ -119,7 +123,8 @@ server <- function(input, output, session) {
 
   # render the plot
   output$plot <- renderPlot({
-    req(data())
+    req(data(), input$funds, input$var_to_analyze, input$type_plot)
+
     plot_time_series(
       data(),
       input$funds,

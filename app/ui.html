@@ -104,14 +104,7 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="form-group shiny-input-container" style="width:100%;">
 <label class="control-label" id="funds-label" for="funds">Seleziona i fondi</label>
 <div>
-<select class="shiny-input-select form-control" id="funds" multiple="multiple"><option value="Fondo A" selected="">Fondo A</option>
-<option value="Fondo B">Fondo B</option>
-<option value="Fondo C">Fondo C</option>
-<option value="Fondo D">Fondo D</option>
-<option value="Fondo E">Fondo E</option>
-<option value="HSTL">HSTL</option>
-<option value="TCM">TCM</option>
-<option value="UNIT">UNIT</option></select>
+<select class="shiny-input-select form-control" id="funds" multiple="multiple"></select>
 <script type="application/json" data-for="funds">{"plugins":["selectize-plugin-a11y"]}</script>
 </div>
 </div>
@@ -120,142 +113,7 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="form-group shiny-input-container" style="width:100%;">
 <label class="control-label" id="var_to_analyze-label" for="var_to_analyze">Seleziona la variabile</label>
 <div>
-<select class="shiny-input-select form-control" id="var_to_analyze"><option value="year">year</option>
-<option value="time">time</option>
-<option value="t_from">t_from</option>
-<option value="t_to">t_to</option>
-<option value="disc_rate">disc_rate</option>
-<option value="bel_incl_tv">bel_incl_tv</option>
-<option value="bel_incl_tv_t">bel_incl_tv_t</option>
-<option value="bel_pm_pv">bel_pm_pv</option>
-<option value="bv">bv</option>
-<option value="bv_asset">bv_asset</option>
-<option value="bv_asset_eop">bv_asset_eop</option>
-<option value="bv_bef_sales">bv_bef_sales</option>
-<option value="bv_bef_strategy">bv_bef_strategy</option>
-<option value="bv_bonds_bs">bv_bonds_bs</option>
-<option value="bv_equity_bs">bv_equity_bs</option>
-<option value="bv_l">bv_l</option>
-<option value="bv_l_asset">bv_l_asset</option>
-<option value="bv_l_asset_eop">bv_l_asset_eop</option>
-<option value="bv_l_bonds_bs">bv_l_bonds_bs</option>
-<option value="bv_l_equity_bs">bv_l_equity_bs</option>
-<option value="bv_liabilities_e">bv_liabilities_e</option>
-<option value="cal_month">cal_month</option>
-<option value="cash_avail_bef_sales">cash_avail_bef_sales</option>
-<option value="cash_held">cash_held</option>
-<option value="cash_held_eop">cash_held_eop</option>
-<option value="liab_exp_tot_pv">liab_exp_tot_pv</option>
-<option value="liab_tv_pv">liab_tv_pv</option>
-<option value="liab_cash_flow_tot_pv">liab_cash_flow_tot_pv</option>
-<option value="liab_prem_tot_pv">liab_prem_tot_pv</option>
-<option value="mv_aft_sales_purch">mv_aft_sales_purch</option>
-<option value="mv_asset">mv_asset</option>
-<option value="mv_asset_eop">mv_asset_eop</option>
-<option value="mv_bef_sales_purch">mv_bef_sales_purch</option>
-<option value="mv_bonds">mv_bonds</option>
-<option value="mv_equity">mv_equity</option>
-<option value="reins_tv_pv">reins_tv_pv</option>
-<option value="reins_bel">reins_bel</option>
-<option value="reins_cash_flow_pv">reins_cash_flow_pv</option>
-<option value="reserve_math">reserve_math</option>
-<option value="reserve_math_fip">reserve_math_fip</option>
-<option value="reserve_ph">reserve_ph</option>
-<option value="reserve_sh">reserve_sh</option>
-<option value="reins_reserve">reins_reserve</option>
-<option value="reserve_exp">reserve_exp</option>
-<option value="sh_tv_pv">sh_tv_pv</option>
-<option value="solvency_margin">solvency_margin</option>
-<option value="sov_cop_release">sov_cop_release</option>
-<option value="sovra_cov">sovra_cov</option>
-<option value="sovra_incr">sovra_incr</option>
-<option value="tax_law122_pv">tax_law122_pv</option>
-<option value="tax_on_fip_pv">tax_on_fip_pv</option>
-<option value="value_in_force_pv">value_in_force_pv</option>
-<option value="vif_gross">vif_gross</option>
-<option value="vif_net">vif_net</option>
-<option value="vif_pm_pv">vif_pm_pv</option>
-<option value="liab_cash_flow_tot_beg_pv">liab_cash_flow_tot_beg_pv</option>
-<option value="liab_claims_tot_pv">liab_claims_tot_pv</option>
-<option value="liab_comm_tot_pv">liab_comm_tot_pv</option>
-<option value="liab_exp_comm_tot_pv">liab_exp_comm_tot_pv</option>
-<option value="liab_gteed_claims_tot_pv">liab_gteed_claims_tot_pv</option>
-<option value="reins_prof_bef_tax_pv">reins_prof_bef_tax_pv</option>
-<option value="fdb">fdb</option>
-<option value="leakage_amount">leakage_amount</option>
-<option value="bel_incl_tv_beg">bel_incl_tv_beg</option>
-<option value="death_charge_m">death_charge_m</option>
-<option value="pw_charge_m">pw_charge_m</option>
-<option value="surr_charge_m">surr_charge_m</option>
-<option value="premium_total">premium_total</option>
-<option value="premium_total_topup">premium_total_topup</option>
-<option value="switch_in">switch_in</option>
-<option value="switch_out">switch_out</option>
-<option value="inv_inc_total">inv_inc_total</option>
-<option value="death_claims">death_claims</option>
-<option value="disability_claims">disability_claims</option>
-<option value="partial_withdrawals_claims" selected="">partial_withdrawals_claims</option>
-<option value="surr_claims">surr_claims</option>
-<option value="maturities">maturities</option>
-<option value="ann_claims">ann_claims</option>
-<option value="coupon_paid">coupon_paid</option>
-<option value="tax_on_fip">tax_on_fip</option>
-<option value="expense_ren">expense_ren</option>
-<option value="comm_initial">comm_initial</option>
-<option value="comm_renewal">comm_renewal</option>
-<option value="profit_net_vif">profit_net_vif</option>
-<option value="cal_year">cal_year</option>
-<option value="int_rate_c_average">int_rate_c_average</option>
-<option value="int_rate_f_average">int_rate_f_average</option>
-<option value="tmg_average">tmg_average</option>
-<option value="partial_withdrawals_claims_nods">partial_withdrawals_claims_nods</option>
-<option value="surr_claims_nods">surr_claims_nods</option>
-<option value="surplus_e">surplus_e</option>
-<option value="technical_result">technical_result</option>
-<option value="prem_net_received">prem_net_received</option>
-<option value="accrued_interest">accrued_interest</option>
-<option value="asset_cash_flow">asset_cash_flow</option>
-<option value="capital_gains_arg">capital_gains_arg</option>
-<option value="capital_gains_arg_l">capital_gains_arg_l</option>
-<option value="capital_gains_asp">capital_gains_asp</option>
-<option value="capital_gains_asp_l">capital_gains_asp_l</option>
-<option value="capital_gains_total">capital_gains_total</option>
-<option value="capital_gains_avail">capital_gains_avail</option>
-<option value="coupons">coupons</option>
-<option value="dividend">dividend</option>
-<option value="inv_inc_cash">inv_inc_cash</option>
-<option value="fwd_rate_dur_fund">fwd_rate_dur_fund</option>
-<option value="maturity_bond">maturity_bond</option>
-<option value="capital_losses_avail">capital_losses_avail</option>
-<option value="capital_losses_total">capital_losses_total</option>
-<option value="liab_prem_tot">liab_prem_tot</option>
-<option value="liab_exp_tot">liab_exp_tot</option>
-<option value="liab_comm_tot">liab_comm_tot</option>
-<option value="liab_claims_tot">liab_claims_tot</option>
-<option value="liab_cash_flow_tot">liab_cash_flow_tot</option>
-<option value="inv_inc_total_l">inv_inc_total_l</option>
-<option value="ann_claims_beg">ann_claims_beg</option>
-<option value="coupon_paid_beg">coupon_paid_beg</option>
-<option value="death_claims_beg">death_claims_beg</option>
-<option value="maturities_beg">maturities_beg</option>
-<option value="partial_withdrawals_claims_beg">partial_withdrawals_claims_beg</option>
-<option value="surr_claims_beg">surr_claims_beg</option>
-<option value="tax_on_fip_beg">tax_on_fip_beg</option>
-<option value="reserve_ph_beg">reserve_ph_beg</option>
-<option value="res_margin_average">res_margin_average</option>
-<option value="bel_incl_tv_t_beg">bel_incl_tv_t_beg</option>
-<option value="sovra_incr_pv">sovra_incr_pv</option>
-<option value="mgt_charge_average">mgt_charge_average</option>
-<option value="inv_inc_cash_fund">inv_inc_cash_fund</option>
-<option value="pol_deaths">pol_deaths</option>
-<option value="pol_maturities">pol_maturities</option>
-<option value="pol_surrenders">pol_surrenders</option>
-<option value="policies_b">policies_b</option>
-<option value="expense_ren_exit">expense_ren_exit</option>
-<option value="expense_ren_fix">expense_ren_fix</option>
-<option value="expense_ren_fund">expense_ren_fund</option>
-<option value="expense_ren_prem">expense_ren_prem</option>
-<option value="tech_rate_ad_average">tech_rate_ad_average</option></select>
+<select class="shiny-input-select form-control" id="var_to_analyze"></select>
 <script type="application/json" data-for="var_to_analyze">{"plugins":["selectize-plugin-a11y"]}</script>
 </div>
 </div>
@@ -264,8 +122,7 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="form-group shiny-input-container" style="width:100%;">
 <label class="control-label" id="years-label" for="years">Seleziona gli anni</label>
 <div>
-<select class="shiny-input-select form-control" id="years" multiple="multiple"><option value="2023" selected="">2023</option>
-<option value="2024" selected="">2024</option></select>
+<select class="shiny-input-select form-control" id="years" multiple="multiple"></select>
 <script type="application/json" data-for="years">{"plugins":["selectize-plugin-a11y"]}</script>
 </div>
 </div>
@@ -433,14 +290,7 @@ Salva i Grafici
 <div class="form-group shiny-input-container html-fill-item html-fill-container" style="width:100%;">
 <label class="control-label" id="funds_print-label" for="funds_print">Seleziona i fondi</label>
 <div class="html-fill-item html-fill-container">
-<select class="shiny-input-select form-control" id="funds_print" multiple="multiple"><option value="Fondo A" selected="">Fondo A</option>
-<option value="Fondo B" selected="">Fondo B</option>
-<option value="Fondo C" selected="">Fondo C</option>
-<option value="Fondo D" selected="">Fondo D</option>
-<option value="Fondo E" selected="">Fondo E</option>
-<option value="HSTL" selected="">HSTL</option>
-<option value="TCM" selected="">TCM</option>
-<option value="UNIT" selected="">UNIT</option></select>
+<select class="shiny-input-select form-control" id="funds_print" multiple="multiple"></select>
 <script type="application/json" data-for="funds_print">{"plugins":["selectize-plugin-a11y"]}</script>
 </div>
 </div>
@@ -449,142 +299,7 @@ Salva i Grafici
 <div class="form-group shiny-input-container html-fill-item html-fill-container" style="width:100%;">
 <label class="control-label" id="var_to_analyze_print-label" for="var_to_analyze_print">Seleziona la variabile</label>
 <div class="html-fill-item html-fill-container">
-<select class="shiny-input-select form-control" id="var_to_analyze_print" multiple="multiple"><option value="year">year</option>
-<option value="time">time</option>
-<option value="t_from">t_from</option>
-<option value="t_to">t_to</option>
-<option value="disc_rate">disc_rate</option>
-<option value="bel_incl_tv">bel_incl_tv</option>
-<option value="bel_incl_tv_t">bel_incl_tv_t</option>
-<option value="bel_pm_pv">bel_pm_pv</option>
-<option value="bv">bv</option>
-<option value="bv_asset">bv_asset</option>
-<option value="bv_asset_eop">bv_asset_eop</option>
-<option value="bv_bef_sales">bv_bef_sales</option>
-<option value="bv_bef_strategy">bv_bef_strategy</option>
-<option value="bv_bonds_bs">bv_bonds_bs</option>
-<option value="bv_equity_bs">bv_equity_bs</option>
-<option value="bv_l">bv_l</option>
-<option value="bv_l_asset">bv_l_asset</option>
-<option value="bv_l_asset_eop">bv_l_asset_eop</option>
-<option value="bv_l_bonds_bs">bv_l_bonds_bs</option>
-<option value="bv_l_equity_bs">bv_l_equity_bs</option>
-<option value="bv_liabilities_e">bv_liabilities_e</option>
-<option value="cal_month">cal_month</option>
-<option value="cash_avail_bef_sales">cash_avail_bef_sales</option>
-<option value="cash_held">cash_held</option>
-<option value="cash_held_eop">cash_held_eop</option>
-<option value="liab_exp_tot_pv">liab_exp_tot_pv</option>
-<option value="liab_tv_pv">liab_tv_pv</option>
-<option value="liab_cash_flow_tot_pv">liab_cash_flow_tot_pv</option>
-<option value="liab_prem_tot_pv">liab_prem_tot_pv</option>
-<option value="mv_aft_sales_purch">mv_aft_sales_purch</option>
-<option value="mv_asset">mv_asset</option>
-<option value="mv_asset_eop">mv_asset_eop</option>
-<option value="mv_bef_sales_purch">mv_bef_sales_purch</option>
-<option value="mv_bonds">mv_bonds</option>
-<option value="mv_equity">mv_equity</option>
-<option value="reins_tv_pv">reins_tv_pv</option>
-<option value="reins_bel">reins_bel</option>
-<option value="reins_cash_flow_pv">reins_cash_flow_pv</option>
-<option value="reserve_math">reserve_math</option>
-<option value="reserve_math_fip">reserve_math_fip</option>
-<option value="reserve_ph">reserve_ph</option>
-<option value="reserve_sh">reserve_sh</option>
-<option value="reins_reserve">reins_reserve</option>
-<option value="reserve_exp">reserve_exp</option>
-<option value="sh_tv_pv">sh_tv_pv</option>
-<option value="solvency_margin">solvency_margin</option>
-<option value="sov_cop_release">sov_cop_release</option>
-<option value="sovra_cov">sovra_cov</option>
-<option value="sovra_incr">sovra_incr</option>
-<option value="tax_law122_pv">tax_law122_pv</option>
-<option value="tax_on_fip_pv">tax_on_fip_pv</option>
-<option value="value_in_force_pv">value_in_force_pv</option>
-<option value="vif_gross">vif_gross</option>
-<option value="vif_net">vif_net</option>
-<option value="vif_pm_pv">vif_pm_pv</option>
-<option value="liab_cash_flow_tot_beg_pv">liab_cash_flow_tot_beg_pv</option>
-<option value="liab_claims_tot_pv">liab_claims_tot_pv</option>
-<option value="liab_comm_tot_pv">liab_comm_tot_pv</option>
-<option value="liab_exp_comm_tot_pv">liab_exp_comm_tot_pv</option>
-<option value="liab_gteed_claims_tot_pv">liab_gteed_claims_tot_pv</option>
-<option value="reins_prof_bef_tax_pv">reins_prof_bef_tax_pv</option>
-<option value="fdb">fdb</option>
-<option value="leakage_amount">leakage_amount</option>
-<option value="bel_incl_tv_beg">bel_incl_tv_beg</option>
-<option value="death_charge_m">death_charge_m</option>
-<option value="pw_charge_m">pw_charge_m</option>
-<option value="surr_charge_m">surr_charge_m</option>
-<option value="premium_total">premium_total</option>
-<option value="premium_total_topup">premium_total_topup</option>
-<option value="switch_in">switch_in</option>
-<option value="switch_out">switch_out</option>
-<option value="inv_inc_total">inv_inc_total</option>
-<option value="death_claims">death_claims</option>
-<option value="disability_claims">disability_claims</option>
-<option value="partial_withdrawals_claims" selected="">partial_withdrawals_claims</option>
-<option value="surr_claims">surr_claims</option>
-<option value="maturities">maturities</option>
-<option value="ann_claims">ann_claims</option>
-<option value="coupon_paid">coupon_paid</option>
-<option value="tax_on_fip">tax_on_fip</option>
-<option value="expense_ren">expense_ren</option>
-<option value="comm_initial">comm_initial</option>
-<option value="comm_renewal">comm_renewal</option>
-<option value="profit_net_vif">profit_net_vif</option>
-<option value="cal_year">cal_year</option>
-<option value="int_rate_c_average">int_rate_c_average</option>
-<option value="int_rate_f_average">int_rate_f_average</option>
-<option value="tmg_average">tmg_average</option>
-<option value="partial_withdrawals_claims_nods">partial_withdrawals_claims_nods</option>
-<option value="surr_claims_nods">surr_claims_nods</option>
-<option value="surplus_e">surplus_e</option>
-<option value="technical_result">technical_result</option>
-<option value="prem_net_received">prem_net_received</option>
-<option value="accrued_interest">accrued_interest</option>
-<option value="asset_cash_flow">asset_cash_flow</option>
-<option value="capital_gains_arg">capital_gains_arg</option>
-<option value="capital_gains_arg_l">capital_gains_arg_l</option>
-<option value="capital_gains_asp">capital_gains_asp</option>
-<option value="capital_gains_asp_l">capital_gains_asp_l</option>
-<option value="capital_gains_total">capital_gains_total</option>
-<option value="capital_gains_avail">capital_gains_avail</option>
-<option value="coupons">coupons</option>
-<option value="dividend">dividend</option>
-<option value="inv_inc_cash">inv_inc_cash</option>
-<option value="fwd_rate_dur_fund">fwd_rate_dur_fund</option>
-<option value="maturity_bond">maturity_bond</option>
-<option value="capital_losses_avail">capital_losses_avail</option>
-<option value="capital_losses_total">capital_losses_total</option>
-<option value="liab_prem_tot">liab_prem_tot</option>
-<option value="liab_exp_tot">liab_exp_tot</option>
-<option value="liab_comm_tot">liab_comm_tot</option>
-<option value="liab_claims_tot">liab_claims_tot</option>
-<option value="liab_cash_flow_tot">liab_cash_flow_tot</option>
-<option value="inv_inc_total_l">inv_inc_total_l</option>
-<option value="ann_claims_beg">ann_claims_beg</option>
-<option value="coupon_paid_beg">coupon_paid_beg</option>
-<option value="death_claims_beg">death_claims_beg</option>
-<option value="maturities_beg">maturities_beg</option>
-<option value="partial_withdrawals_claims_beg">partial_withdrawals_claims_beg</option>
-<option value="surr_claims_beg">surr_claims_beg</option>
-<option value="tax_on_fip_beg">tax_on_fip_beg</option>
-<option value="reserve_ph_beg">reserve_ph_beg</option>
-<option value="res_margin_average">res_margin_average</option>
-<option value="bel_incl_tv_t_beg">bel_incl_tv_t_beg</option>
-<option value="sovra_incr_pv">sovra_incr_pv</option>
-<option value="mgt_charge_average">mgt_charge_average</option>
-<option value="inv_inc_cash_fund">inv_inc_cash_fund</option>
-<option value="pol_deaths">pol_deaths</option>
-<option value="pol_maturities">pol_maturities</option>
-<option value="pol_surrenders">pol_surrenders</option>
-<option value="policies_b">policies_b</option>
-<option value="expense_ren_exit">expense_ren_exit</option>
-<option value="expense_ren_fix">expense_ren_fix</option>
-<option value="expense_ren_fund">expense_ren_fund</option>
-<option value="expense_ren_prem">expense_ren_prem</option>
-<option value="tech_rate_ad_average">tech_rate_ad_average</option></select>
+<select class="shiny-input-select form-control" id="var_to_analyze_print" multiple="multiple"></select>
 <script type="application/json" data-for="var_to_analyze_print">{"plugins":["selectize-plugin-a11y"]}</script>
 </div>
 </div>
@@ -603,8 +318,7 @@ Salva i Grafici
 <div class="form-group shiny-input-container html-fill-item html-fill-container" style="width:100%;">
 <label class="control-label" id="years_print-label" for="years_print">Seleziona gli anni</label>
 <div class="html-fill-item html-fill-container">
-<select class="shiny-input-select form-control" id="years_print" multiple="multiple"><option value="2023" selected="">2023</option>
-<option value="2024" selected="">2024</option></select>
+<select class="shiny-input-select form-control" id="years_print" multiple="multiple"></select>
 <script type="application/json" data-for="years_print">{"plugins":["selectize-plugin-a11y"]}</script>
 </div>
 </div>
@@ -697,7 +411,7 @@ ojs_define <- function(..., .session = shiny::getDefaultReactiveDomain()) {
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92]}},"value":[{"type":"character","attributes":{},"value":["base","bit","bit64","bslib","cachem","cli","colorspace","compiler","crayon","crul","curl","datasets","digest","dplyr","evaluate","farver","fastmap","fontawesome","fontBitstreamVera","fontLiberation","fontquiver","forcats","fs","gdtools","generics","gfonts","ggiraph","ggplot2","glue","graphics","grDevices","grid","gtable","here","hms","htmltools","htmlwidgets","httpcode","httpuv","janitor","jquerylib","jsonlite","knitr","later","lifecycle","lubridate","magrittr","memoise","methods","mime","munsell","pacman","parallel","patchwork","pillar","pkgconfig","promises","purrr","R6","Rcpp","readr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","shinycssloaders","shinyjs","shinyWidgets","snakecase","stats","stringi","stringr","systemfonts","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tzdb","utils","uuid","vctrs","vroom","waiter","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["4.5.0","4.6.0","4.6.0-1","0.9.0","1.1.0","3.6.4","2.1-1","4.5.0","1.5.3","1.5.0","6.2.2","4.5.0","0.6.37","1.1.4","1.0.3","2.1.2","1.2.0","0.5.3","0.1.1","0.1.0","0.2.1","1.0.0","1.6.6","0.4.2","0.1.3","0.2.0","0.8.13","3.5.2","1.8.0","4.5.0","4.5.0","4.5.0","0.3.6","1.0.1","1.1.3","0.5.8.1","1.6.4","0.3.0","1.6.15","2.2.1","0.1.4","2.0.0","1.50","1.4.2","1.0.4","1.9.4","2.0.3","2.0.1","4.5.0","0.13","0.5.1","0.5.1","4.5.0","1.3.0","1.10.2","2.0.3","1.3.2","1.0.4","2.6.1","1.0.14","2.1.5","1.1.6","2.29","2.0.4","0.17.1","0.4.10","1.3.0","1.10.0","1.1.0","2.1.0","0.9.0","0.11.1","4.5.0","1.8.7","1.5.1","1.2.2","3.2.1","1.3.1","1.2.1","2.0.0","0.3.0","4.5.0","0.5.0","4.5.0","1.2-1","0.6.5","1.6.5","0.2.5","3.0.2","0.52","1.8-4","2.3.10"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88]}},"value":[{"type":"character","attributes":{},"value":["base","bslib","cachem","cli","colorspace","compiler","crayon","crul","curl","datasets","digest","dplyr","evaluate","farver","fastmap","fontawesome","fontBitstreamVera","fontLiberation","fontquiver","forcats","fs","gdtools","generics","gfonts","ggiraph","ggplot2","glue","graphics","grDevices","grid","gtable","here","hms","htmltools","htmlwidgets","httpcode","httpuv","janitor","jquerylib","jsonlite","knitr","later","lifecycle","lubridate","magrittr","memoise","methods","mime","munsell","pacman","patchwork","pillar","pkgconfig","promises","purrr","R6","Rcpp","readr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","shinycssloaders","shinyjs","shinyWidgets","snakecase","stats","stringi","stringr","systemfonts","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tzdb","utils","uuid","vctrs","waiter","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["4.5.0","0.9.0","1.1.0","3.6.4","2.1-1","4.5.0","1.5.3","1.5.0","6.2.2","4.5.0","0.6.37","1.1.4","1.0.3","2.1.2","1.2.0","0.5.3","0.1.1","0.1.0","0.2.1","1.0.0","1.6.6","0.4.2","0.1.3","0.2.0","0.8.13","3.5.2","1.8.0","4.5.0","4.5.0","4.5.0","0.3.6","1.0.1","1.1.3","0.5.8.1","1.6.4","0.3.0","1.6.15","2.2.1","0.1.4","2.0.0","1.50","1.4.2","1.0.4","1.9.4","2.0.3","2.0.1","4.5.0","0.13","0.5.1","0.5.1","1.3.0","1.10.2","2.0.3","1.3.2","1.0.4","2.6.1","1.0.14","2.1.5","1.1.6","2.29","2.0.4","0.17.1","0.4.10","1.3.0","1.10.0","1.1.0","2.1.0","0.9.0","0.11.1","4.5.0","1.8.7","1.5.1","1.2.2","3.2.1","1.3.1","1.2.1","2.0.0","0.3.0","4.5.0","0.5.0","4.5.0","1.2-1","0.6.5","0.2.5","3.0.2","0.52","1.8-4","2.3.10"]}]}]}
 </script>
 <!--/html_preserve-->
 
