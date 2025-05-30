@@ -3,12 +3,12 @@
 load_test_data <- function() {
   data_previous_year <- read_delim(
     here("data", "test.csv"),
-    delim = ";"
+    delim = ","
   )
 
   data_current_year <- read_delim(
     here("data", "test2.csv"),
-    delim = ";"
+    delim = ","
   )
 
   bind_rows(
@@ -53,7 +53,7 @@ upload_data <- function(previous_data, new_data_path, year_new_data) {
   # read new data
   new_data <- read_delim(
     new_data_path,
-    delim = ";",
+    delim = ",",
     show_col_types = F
   ) |>
     clean_names() |>
@@ -137,7 +137,7 @@ save_data <- function(data, dir = "data") {
   years <- unique(data$year)
   filename <- paste0("data_", paste(years, collapse = "_"), ".csv")
   filepath <- here::here(dir, filename)
-  write_delim(data, filepath, delim = ";")
+  write_delim(data, filepath, delim = ",")
   message("Data saved to ", filepath)
 }
 
@@ -145,3 +145,19 @@ save_data <- function(data, dir = "data") {
 remove_data <- function(data) {
   slice(data, 0)
 }
+
+
+# load data with separator ";" and save it with ","
+change_format_csv <- function(path, new_name) {
+  read_delim(
+    path,
+    delim = ";"
+  ) |>
+    write_delim(
+      new_name,
+      delim = ","
+    )
+}
+
+# change_format_csv("data/test.csv", "24_test.csv")
+# change_format_csv("data/test2.csv", "23_test.csv")

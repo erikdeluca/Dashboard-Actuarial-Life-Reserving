@@ -37,7 +37,8 @@ options(shiny.maxRequestSize = 1000 * 1024^2)
 # load functions ---------------------------------------------------------------
 source(here("R", "import_data.R"))
 source(here("R", "plots.R"))
-source(here("R", "save_data.R"))
+source(here("R", "save_plots.R"))
+source(here("R", "label_number.R"))
 
 
 # load data ---------------------------------------------------------------

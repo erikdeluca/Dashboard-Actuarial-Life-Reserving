@@ -35,7 +35,7 @@ pacman::p_load(
 
 ## Avvio rapido
 
-1. **Clona o scarica** la repository:
+1. **Clona o scarica** la repository (per clonarla bisogna avere [Git](https://git-scm.com/downloads) installato): 
    ```
    git clone https://github.com/erikdeluca/Dashboard-Actuarial-Life-Reserving.git
    ```
@@ -50,6 +50,8 @@ pacman::p_load(
 ---
 
 ## Aggiunta dati
+
+### Dati pre-caricati
 
 All'avvio dell'app, R proverà a caricare i dati presenti nel file `data/dati_precaricati.csv`.
 Per aggiungere i tuoi dati:
@@ -67,7 +69,20 @@ Per aggiungere i tuoi dati:
 In alternativa, puoi avviare l'app senza dati pre-caricati e caricarli manualmente tramite l'interfaccia.
 Inoltre, tramite l'app puoi salvare il dataset di lavoro in un file CSV per usi futuri.
 
----
+### Dati aggiunti tramite l'interfaccia
+
+Puoi aggiungere nuovi flussi direttamente dall'interfaccia dell'app.
+
+1. Assicurati che il file sia in formato CSV con delimitatore `,` (virgola).
+2. Assicurati che il file abbia le colonne corrette (`year` viene inserito da input):
+   - `group` (Fondo di appartenenza del flusso)
+   - `time` (Tempo del flusso in mesi)
+   - `period` (Etichetta del tempo)
+   - `t_from` (Tempo di inizio del flusso)
+   - `t_to` (Tempo di fine del flusso)
+3. Vai alla sezione "Gestione dati" e seleziona il file CSV da caricare.
+4. Aspetta che il file sia caricato e seleziona l'anno di riferimento del file.
+5. Clicca su "Carica il file".
 
 ## Struttura del progetto
 

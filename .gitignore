@@ -7,3 +7,4 @@
 .RDataTmp
 *.Rproj
 app/ui_files/
+app/ui.html
