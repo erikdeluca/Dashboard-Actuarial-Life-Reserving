@@ -68,6 +68,25 @@ upload_data <- function(previous_data, new_data_path, year_new_data) {
         ~ mean(.x, na.rm = TRUE)
       ),
       .by = c(year, group, time, period, t_from, t_to)
+    ) |>
+    # create new cumulative columns for "death_claims","disability_claims","surr_claims","partial_withdrawals_claims", "maturities", "ann_claims", "coupon_paid", "expense_ren"
+    arrange(year, group, time) |>
+    mutate(
+      across(
+        c(
+          death_claims,
+          disability_claims,
+          surr_claims,
+          partial_withdrawals_claims,
+          maturities,
+          ann_claims,
+          coupon_paid,
+          expense_ren
+        ),
+        ~ cumsum(.x),
+        .names = "{.col}_cumulative"
+      ),
+      .by = c(year, group)
     )
 
   if (is.null(previous_data)) {

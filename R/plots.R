@@ -92,7 +92,12 @@ plot_time_series <- function(
         type_plot == "index_t" ~ scales::percent(y, accuracy = .1)
       ),
     ) |>
-    filter(time > 0) -> data_graph
+    # only if var_confronto is not “reserve_math”, “int_rate_f_average” e “int_rate_c_average”
+    filter(
+      var_confronto %in%
+        c("reserve_math", "int_rate_f_average", "int_rate_c_average") |
+        time > 0
+    ) -> data_graph
 
   # plotting the data
   plot <-

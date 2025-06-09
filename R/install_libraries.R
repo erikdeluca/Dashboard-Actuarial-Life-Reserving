@@ -14,7 +14,8 @@ required_packages <- c(
   "ggiraph",
   "gfonts",
   "gdtools",
-  "quarto"
+  "quarto",
+  "plyr"
 )
 
 # Installa i pacchetti mancanti
