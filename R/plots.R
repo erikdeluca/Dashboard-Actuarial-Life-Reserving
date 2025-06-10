@@ -81,10 +81,11 @@ plot_time_series <- function(
       across(year, as.factor),
       time = time / 12,
       label = case_when(
+        str_detect(var_confronto, "rate") ~ scales::percent(y, accuracy = .1),
         type_plot == "abs" ~
           number(
             y,
-            accuracy = 1,
+            accuracy = .1,
             # prefix = "€",
             scale_cut = cut_short_scale()
           ),
@@ -165,6 +166,12 @@ plot_time_series <- function(
       labs(
         subtitle = "Indexed to the previous value of the reserve math"
       )
+  }
+
+  # set percentage format if var_confronto contains "rate"
+  if (str_detect(var_confronto, "rate")) {
+    plot <- plot +
+      scale_y_continuous(labels = scales::percent_format(accuracy = .1))
   }
 
   # Add text labels if show_text is TRUE

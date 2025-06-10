@@ -2,12 +2,12 @@
 
 load_test_data <- function() {
   data_previous_year <- read_delim(
-    here("data", "test.csv"),
+    here("data", "23_test.csv"),
     delim = ","
   )
 
   data_current_year <- read_delim(
-    here("data", "test2.csv"),
+    here("data", "24_test.csv"),
     delim = ","
   )
 
@@ -43,7 +43,7 @@ load_test_data <- function() {
   data |>
     write_delim(
       here("data", "test_merged.csv"),
-      delim = ";"
+      delim = ","
     )
 }
 
@@ -69,11 +69,10 @@ upload_data <- function(previous_data, new_data_path, year_new_data) {
       ),
       .by = c(year, group, time, period, t_from, t_to)
     ) |>
-    # create new cumulative columns for "death_claims","disability_claims","surr_claims","partial_withdrawals_claims", "maturities", "ann_claims", "coupon_paid", "expense_ren"
-    arrange(year, group, time) |>
+    # create new column with the sum of "death_claims","disability_claims","surr_claims","partial_withdrawals_claims", "maturities", "ann_claims", "coupon_paid", "expense_ren" and call "capital_dip"
     mutate(
-      across(
-        c(
+      capital_dip = rowSums(
+        pick(
           death_claims,
           disability_claims,
           surr_claims,
@@ -83,10 +82,8 @@ upload_data <- function(previous_data, new_data_path, year_new_data) {
           coupon_paid,
           expense_ren
         ),
-        ~ cumsum(.x),
-        .names = "{.col}_cumulative"
-      ),
-      .by = c(year, group)
+        na.rm = TRUE
+      )
     )
 
   if (is.null(previous_data)) {
